@@ -56,6 +56,8 @@ private slots:
 
     void on_lineEditComp_num_returnPressed();
 
+    void on_pushButton_CE_clicked();
+
 private:
     Ui::complex_number_visual *ui;
 };

@@ -126,3 +126,8 @@ void complex_number_visual::on_lineEditComp_num_returnPressed()
 {
     on_pushButton_result_clicked();
 }
+
+void complex_number_visual::on_pushButton_CE_clicked()
+{
+    ui->lineEditComp_num->clear();
+}

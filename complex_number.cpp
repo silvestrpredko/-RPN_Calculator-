@@ -12,9 +12,6 @@ void complex_number::input(string &tmp)
     {
         if(example[i] == ')' && _switch_ == _true_)
         {
-            //tmp_example_1 = new string [i - 2];
-            //strncpy(tmp_example_1,example+1,i-1);
-
             tmp_example_1.assign(example,1,i-1);
             label_3 = i + 3;
             _switch_ = _false_;
@@ -23,14 +20,10 @@ void complex_number::input(string &tmp)
         {
             if(example[i] == ')' && _switch_ == _false_)
             {
-                //tmp_example_2 = new string [i - label_3];
-                //strncpy(tmp_example_2,example+label_3,i - label_3);
                 tmp_example_2.assign(example,label_3,i-label_3);
             }
         }
     }
-    //cout<<tmp_example_1<<endl;
-    //cout<<tmp_example_2<<endl;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void complex_number :: sort()
@@ -117,12 +110,9 @@ void complex_number :: sort()
     ///////////////////////////////////////////////////////////////////
     _switch_ = _true_;
     ///////////////////////////////////////////////////////////////////
-    //ASS
-    ///////////////////////////////////////////////////////////////////
     for(unsigned int i = 0;i < 4;i++)
     {
             QString qstr = QString::fromStdString(str_part_detected[i]);
-            //numbers[i] = stof(str_part_detected[i]);
             numbers[i] = qstr.toDouble();
             _switch_ = _false_;
     }
@@ -264,7 +254,6 @@ void complex_number :: output()
         return_tmp+="+";
         return_tmp+=to_string(imaginary_unit);
         return_tmp+="i";
-
     }
     if(real_part == 0 && imaginary_unit == 0)
     {
