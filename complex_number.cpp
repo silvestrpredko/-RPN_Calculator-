@@ -112,8 +112,7 @@ void complex_number :: sort()
     ///////////////////////////////////////////////////////////////////
     for(unsigned int i = 0;i < 4;i++)
     {
-            QString qstr = QString::fromStdString(str_part_detected[i]);
-            numbers[i] = qstr.toDouble();
+            numbers[i] = stof(str_part_detected[i]);
             _switch_ = _false_;
     }
     ///////////////////////////////////////////////////////////////////
