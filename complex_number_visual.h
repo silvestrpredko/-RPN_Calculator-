@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <complex_number.h>
 //-----------------------------------------
+#include <QKeyEvent>
+//-----------------------------------------
 namespace Ui
 {
     class complex_number_visual;
@@ -60,8 +62,12 @@ private slots:
 
     void on_pushButton_CE_clicked();
 
+    void on_pushButton_BackSpace_clicked();
+
 private:
     Ui::complex_number_visual *ui;
+protected:
+    virtual void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // COMPLEX_NUMBER_VISUAL_H
