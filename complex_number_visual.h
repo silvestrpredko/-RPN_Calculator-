@@ -3,8 +3,10 @@
 
 #include <QDialog>
 #include <complex_number.h>
-namespace Ui {
-class complex_number_visual;
+//-----------------------------------------
+namespace Ui
+{
+    class complex_number_visual;
 }
 
 class complex_number_visual : public QDialog

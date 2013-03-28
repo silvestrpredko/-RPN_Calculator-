@@ -131,3 +131,17 @@ void complex_number_visual::on_pushButton_CE_clicked()
 {
     ui->lineEditComp_num->clear();
 }
+//--------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
