@@ -202,12 +202,12 @@ void complex_number_visual::keyPressEvent(QKeyEvent *event)
        ui->pushButton_minus->animateClick(130);
    }
    ////////////////////////////////////////////////////////////
-   if(switch_key == Qt::Key_multiply)
+   if(switch_key == Qt::Key_Asterisk)
    {
        ui->pushButton_multiplate->animateClick(130);
    }
    ////////////////////////////////////////////////////////////
-   if(switch_key == Qt::Key_division)
+   if(switch_key == Qt::Key_Slash)
    {
        ui->pushButton_division->animateClick(130);
    }
@@ -259,3 +259,4 @@ void complex_number_visual::on_pushButton_BackSpace_clicked()
     ui->lineEditComp_num->clear ();
     ui->lineEditComp_num->insert (undo);
 }
+//--------------------------------------------------------------

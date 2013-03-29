@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>403</width>
-    <height>373</height>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="readOnly">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_1">
@@ -358,7 +358,7 @@
     <rect>
      <x>30</x>
      <y>290</y>
-     <width>341</width>
+     <width>161</width>
      <height>31</height>
     </rect>
    </property>
@@ -372,9 +372,9 @@
   <widget class="QPushButton" name="pushButton_BackSpace">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>330</y>
-     <width>341</width>
+     <x>200</x>
+     <y>290</y>
+     <width>171</width>
      <height>31</height>
     </rect>
    </property>
