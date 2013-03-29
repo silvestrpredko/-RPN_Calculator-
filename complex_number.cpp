@@ -3,6 +3,46 @@
 void complex_number::input(string &tmp)
 {
     example = tmp;
+    //////////////////////////////////////////////////////////////////
+    Error = fail;
+    unsigned int i = 0;
+    while(i < example.length())
+    {
+        if(example[i] == '(' && Error == fail)
+        {
+            Error = good;
+        }
+        else
+            throw ERROR("Error you forgot \"(\" ");
+        for(unsigned int j = i;j < example.length();j++)
+        {
+            if(example[j] == 'i' && example[j+1] == ')' && example[j-1] == '(')
+            {
+                throw ERROR("Error");
+            }
+            if(example[j] == ')' && example[j-1] != 'i')
+            {
+                throw ERROR("You forgot i !");
+            }
+            if(example[j] == 'i' && example[j+1] != ')')
+            {
+                throw ERROR("Error you forgot \")\" ");
+            }
+            if(example[j] == 'i' && example[j+1] == ')' && Error == good)
+            {
+                Error = fail;
+                i = j+2;
+                break;
+            }
+            else
+                if(j == example.length() - 1)
+                {
+                    throw ERROR("Error you forgot \")\" ");
+                }
+                else continue;
+        }
+        i++;
+    }
     ///////////////////////////////////////////////////////////////////
     switch_2 = 1;
     ///////////////////////////////////////////////////////////////////
@@ -24,11 +64,40 @@ void complex_number::input(string &tmp)
             }
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    for(unsigned int i = 0;i < tmp_example_1.length();i++)
+    {
+        if(tmp_example_1[i] == '0' || tmp_example_1[i] == '1' || tmp_example_1[i] == '2' || tmp_example_1[i] == '3' || tmp_example_1[i] == '4' ||
+           tmp_example_1[i] == '5' ||tmp_example_1[i] == '6' ||tmp_example_1[i] == '7' ||tmp_example_1[i] == '8' || tmp_example_1[i] == '9' )
+        {
+            if(tmp_example_1[i+1] == '+' || tmp_example_1[i+1] == '-' || tmp_example_1[i+1] == '*' || tmp_example_1[i+1] == '/')
+            {
+                if(tmp_example_1[i+2] == '+' || tmp_example_1[i+2] == '-' || tmp_example_1[i+2] == '*' || tmp_example_1[i+2] == '/')
+                {
+                    throw ERROR("Error operator!");
+                }
+            }
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    for(unsigned int i = 0;i < tmp_example_2.length();i++)
+    {
+        if(tmp_example_2[i] == '0' || tmp_example_2[i] == '1' || tmp_example_2[i] == '2' || tmp_example_2[i] == '3' || tmp_example_2[i] == '4' ||
+           tmp_example_2[i] == '5' ||tmp_example_2[i] == '6' ||tmp_example_2[i] == '7' ||tmp_example_2[i] == '8' || tmp_example_2[i] == '9' )
+        {
+            if(tmp_example_2[i+1] == '+' || tmp_example_2[i+1] == '-' || tmp_example_2[i+1] == '*' || tmp_example_2[i+1] == '/')
+            {
+                if(tmp_example_2[i+2] == '+' || tmp_example_2[i+2] == '-' || tmp_example_2[i+2] == '*' || tmp_example_2[i+2] == '/')
+                {
+                    throw ERROR("Error operator!");
+                }
+            }
+        }
+    }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void complex_number :: sort()
 {
-    ///////////////////////////////////////////////////////////////////
     label_1 = 0;
     ///////////////////////////////////////////////////////////////////
     int k = 0;
@@ -46,11 +115,11 @@ void complex_number :: sort()
         {
             if(tmp_example_1[i] == '+' || tmp_example_1[i] == '-' || tmp_example_1[i] == 'i')
             {
-                label_2 = i;
-                label_2 = i;   
-                str_part_detected[k].assign(tmp_example_1,label_1,label_2-label_1);
-                label_1 = i+1;
-                k++;
+                    label_2 = i;
+                    label_2 = i;
+                    str_part_detected[k].assign(tmp_example_1,label_1,label_2-label_1);
+                    label_1 = i+1;
+                    k++;
             }
         }
     }
@@ -70,10 +139,10 @@ void complex_number :: sort()
         {
             if(tmp_example_2[i] == '+'  || tmp_example_2[i] == '-' || tmp_example_2[i] == 'i')
             {
-                label_2 = i;         
-                str_part_detected[k].assign(tmp_example_2,label_1,label_2 - label_1);
-                label_1 = i+1;
-                k++;
+                    label_2 = i;
+                    str_part_detected[k].assign(tmp_example_2,label_1,label_2 - label_1);
+                    label_1 = i+1;
+                    k++;
             }
         }
     }
@@ -110,6 +179,38 @@ void complex_number :: sort()
     ///////////////////////////////////////////////////////////////////
     _switch_ = _true_;
     ///////////////////////////////////////////////////////////////////
+    //-----------------------------------------------------------------
+    unsigned int j = 0;
+    while(j < 4)
+    {
+        for_str_part_det = str_part_detected[j];
+        for(unsigned int i = 0;i < for_str_part_det.length();i++)
+        {
+            if(for_str_part_det[i] == '/' || for_str_part_det[i] == '*')
+            {
+                temp_1.assign(for_str_part_det,0,i);
+                temp_2.assign(for_str_part_det,i+1,for_str_part_det.length()-(i+1));
+                if(for_str_part_det[i] == '*')
+                {
+                    num_1 = stof(temp_1);
+                    num_2 = stof(temp_2);
+                    num_3 = num_1*num_2;
+                    str_part_detected[j] = to_string(num_3);
+                }
+                if(for_str_part_det[i] == '/')
+                {
+                    num_1 = stof(temp_1);
+                    num_2 = stof(temp_2);
+                    num_3 = num_1/num_2;
+                    str_part_detected[j] = to_string(num_3);
+                }
+            }
+        }
+        cout<<str_part_detected[j]<<endl;
+        j++;
+    }
+    //-----------------------------------------------------------------
+    ///////////////////////////////////////////////////////////////////
     for(unsigned int i = 0;i < 4;i++)
     {
             numbers[i] = stof(str_part_detected[i]);
@@ -125,7 +226,7 @@ void complex_number :: sort()
         }
     }
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 string complex_number :: operations()
 {
     if(temp_sign[0] == "+" && temp_sign[1] == "+")
@@ -155,7 +256,7 @@ string complex_number :: operations()
             output();
         }
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if(temp_sign[0] == "-" && temp_sign[1] == "-")
     {
         if(_sign_  == "+")
@@ -184,7 +285,7 @@ string complex_number :: operations()
         }
 
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if(temp_sign[0] == "+" && temp_sign[1] == "-")
     {
         if(_sign_  == "+")
@@ -212,7 +313,7 @@ string complex_number :: operations()
             output();
         }
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if(temp_sign[0] == "-" && temp_sign[1] == "+")
     {
         if(_sign_  == "+")
@@ -282,7 +383,7 @@ void complex_number :: output()
         return_tmp+=to_string(real_part);
     }
 }
-///////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

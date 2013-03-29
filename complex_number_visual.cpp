@@ -106,21 +106,33 @@ void complex_number_visual::on_pushButton_i_clicked()
 
 void complex_number_visual::on_pushButton_result_clicked()
 {
-
-    QString tmp = ui->lineEditComp_num->text ();
-    ////////////////////////////////////////////
-    string temp = tmp.toStdString ();
-    ///////////////////////////////////////////
-    complex_number OBJ;
-    ///////////////////////////////////////////
-    OBJ.input(temp);
-    OBJ.sort();
-    ///////////////////////////////////////////
-    string Result = OBJ.operations();
-    ///////////////////////////////////////////
-    QString ResultString = QString::fromStdString(Result);
-    ///////////////////////////////////////////
-    ui->lineEditComp_num->setText (ResultString);
+    try
+    {
+        QString str = ui->lineEditComp_num->text();
+        if(str.isEmpty())
+        {
+            ui->lineEditComp_num->setText("Error");
+        }
+        QString tmp = ui->lineEditComp_num->text ();
+        ////////////////////////////////////////////
+        string temp = tmp.toStdString ();
+        ///////////////////////////////////////////
+        complex_number OBJ;
+        ///////////////////////////////////////////
+        OBJ.input(temp);
+        OBJ.sort();
+        ///////////////////////////////////////////
+        string Result = OBJ.operations();
+        ///////////////////////////////////////////
+        QString ResultString = QString::fromStdString(Result);
+        ///////////////////////////////////////////
+        ui->lineEditComp_num->setText (ResultString);
+    }
+    catch(complex_number::ERROR str)
+    {
+        QString Er = QString::fromStdString(str.Error_list);
+        ui->lineEditComp_num->setText(Er);
+    }
 }
 
 void complex_number_visual::on_lineEditComp_num_returnPressed()
