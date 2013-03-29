@@ -191,3 +191,10 @@ void MainWindow::on_actionCompute_Complex_triggered()
     OBJ.setModal (true);
     OBJ.exec ();
 }
+
+void MainWindow::on_actionMatrix_triggered()
+{
+    Matrix OBJ;
+    OBJ.setModal (true);
+    OBJ.exec ();
+}

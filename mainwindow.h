@@ -10,6 +10,7 @@ using namespace std;
 #include <rpncalc.h>
 #include <complex_number_visual.h>
 #include <complex_number.h>
+#include <matrix.h>
 
 namespace Ui {
 class MainWindow;
@@ -73,6 +74,8 @@ private slots:
     void on_lineEdit_returnPressed();
 
     void on_actionCompute_Complex_triggered();
+
+    void on_actionMatrix_triggered();
 
 private:
     Ui::MainWindow *ui;

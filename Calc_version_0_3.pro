@@ -17,17 +17,20 @@ SOURCES += main.cpp\
     about.cpp \
     rpncalc.cpp \
     complex_number.cpp \
-    complex_number_visual.cpp
+    complex_number_visual.cpp \
+    matrix.cpp
 
 HEADERS  += mainwindow.h \
     about.h \
     rpncalc.h \
     complex_number.h \
-    complex_number_visual.h
+    complex_number_visual.h \
+    matrix.h
 
 FORMS    += mainwindow.ui \
     about.ui \
-    complex_number_visual.ui
+    complex_number_visual.ui \
+    matrix.ui
 
 RESOURCES += \
     Data.qrc \
